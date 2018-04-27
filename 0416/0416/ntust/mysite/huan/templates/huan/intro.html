@@ -1,0 +1,40 @@
+<h1 class="text-center">安安我的個人網頁</h1>
+<div class="container-fluid">
+{% for p in profilee %}
+<h2>{{ p.name }}</h2>
+
+<tr>
+	<th>電子信箱:</th>
+	<td>{{ p.email_address }}</td>
+</tr>
+<tr>
+	<th>手機號碼:</th>
+	<td>{{ p.phone_number }}</td>
+</tr>
+
+{% if p.introduction_set.all %}
+<table class="table">
+	{% for i in p.introduction_set.all %}
+	<tr>
+		<th>關於我:</th>
+		<td>{{i.about_myself}}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% if p.hobby_set.all %}
+<table class="table">
+	<tr>
+		<th>興趣:</th>
+		<th>關於我的興趣:</th>
+	</tr>
+	{% for h in p.hobby_set.all %}
+	<tr>
+		<td>{{h.interest}}</td>
+		<td>{{h.about_hobby}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+{% endif %}
+{% endfor %}
